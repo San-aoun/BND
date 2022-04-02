@@ -15,24 +15,30 @@ namespace BND_Testing.Service
             _context = context;
         }
 
-        public async Task<MovementDto> GetMovements(int productId)
+        public async Task<MovementDto> GetMovementsForOverview(int productId, EnumGetMovementFilter filter)
         {
-            var prodCustomer = _context.ProductCustomers.Find(productId).Customer.CustomerEmail;
-            if (prodCustomer == null) return null;
 
-            ThirdPartyResponse mockThirdPartyResp = new()
+            var prodCustomer = _context.ProductCustomers.Find(productId);
+            if (prodCustomer != null)
             {
-                Account = prodCustomer,
-                Amount = 1000,
-                AccountFrom = "Jane_Account",
-                AccountTo = "Joe_Account",
-                PageNumber = 10,
-                PageSize = 10,
-                MovementType = (EnumMovementType)Enum.Parse(typeof(EnumMovementType), "Free"),
-            };
+                // Call 3-Party API and Map with BND customer
+                ThirdPartyResponse mockThirdPartyResp = new()
+                {
+                    Account = "Brandnewday_Account",
+                    Amount = 1000,
+                    AccountFrom = "Jane_Account",
+                    AccountTo = "Joe_Account",
+                    PageNumber = 10,
+                    PageSize = 10,
 
-            MovementDto movement = Map(mockThirdPartyResp);
-            return movement;
+                    MovementType = (EnumMovementType)Enum.Parse(typeof(EnumMovementType), filter.ToString()),
+                };
+
+                MovementDto movement = Map(mockThirdPartyResp);
+                return movement;
+            } 
+            else
+                return null;           
         }
 
         public static MovementDto Map(ThirdPartyResponse thirdPartyResponse) => new()
