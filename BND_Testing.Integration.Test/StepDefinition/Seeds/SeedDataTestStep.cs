@@ -21,27 +21,41 @@ namespace BND_Testing.Integration.Test.StepDefinition.Seeds
         {
             for (var i = 0; i < table.RowCount; i++)
             {
+                // seed produt 
+                var product = new Product
+                {
+                    ProductType = table.Rows[i]["ProductType"],
+                    ExternalAccount = table.Rows[i]["ExternalAccount"],
+                };
+
+                _fakeDBContext.Products.Add(product);
+                _fakeDBContext.SaveChanges();
+
+                // seed customer 
+                var customer = new Customer
+                {
+                    CustomerFirstName = table.Rows[i]["CustomerFirstName"],
+                    CustomerLastName = table.Rows[i]["CustomerLastName"],
+                    CustomerEmail = table.Rows[i]["CustomerEmail"],
+                };
+                _fakeDBContext.Customers.Add(customer);
+                _fakeDBContext.SaveChanges();
+
+                // seed productCustomer 
+                var ProductId = _fakeDBContext.Products.Single(p => p.ProductType == table.Rows[i]["ProductType"]).ProductId;
+                var CustomerId = _fakeDBContext.Customers.Single(c => c.CustomerEmail == table.Rows[i]["CustomerEmail"]).CustomerId;
+
                 var productCustomer = new ProductCustomer()
                 {
-                    ProductId = int.Parse(table.Rows[i]["ProductId"]),
-                    Product = new Product
-                    {
-                        ProductType = table.Rows[i]["ProductType"],
-                        ExternalAccount = table.Rows[i]["ExternalAccount"],
-                    },
-                    Customer = new Customer
-                    {
-                        CustomerFirstName = table.Rows[i]["CustomerFirstName"],
-                        CustomerLastName = table.Rows[i]["CustomerLastName"],
-                        CustomerEmail = table.Rows[i]["CustomerEmail"],
-                    }
-
+                    ProductId = ProductId,
+                    CustomerId = CustomerId,
+                    Product = product,
+                    Customer = customer
                 };
                 _fakeDBContext.ProductCustomers.Add(productCustomer);
-
+                _fakeDBContext.SaveChanges();
 
             }
-            _fakeDBContext.SaveChanges();
         }
     }
 }

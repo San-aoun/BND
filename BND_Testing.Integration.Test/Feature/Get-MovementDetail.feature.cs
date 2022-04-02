@@ -80,17 +80,15 @@ namespace BND_Testing.Integration.Test.Feature
 #line 3
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                        "ProductId",
                         "Productype",
                         "ExternalAccount",
                         "CustomerFirstName",
                         "CustomerLastName",
                         "CustomerEmail"});
             table1.AddRow(new string[] {
-                        "001",
-                        "Product_Test",
+                        "SavingsRetirment",
                         "Account_Test",
-                        "Joe",
+                        "Jane",
                         "Doe",
                         "Test@brandnewday.com"});
 #line 4
@@ -125,7 +123,7 @@ this.ScenarioInitialize(scenarioInfo);
 this.FeatureBackground();
 #line hidden
 #line 12
- testRunner.When("user gets movement detial with by product id \"001\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("user gets movement detial with by Product Type \"SavingsRetirment\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 13
  testRunner.Then("the user gets a response with code \"200\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -146,11 +144,11 @@ this.FeatureBackground();
                             "accountFrom",
                             "accountTo"});
                 table3.AddRow(new string[] {
-                            "Test@brandnewday.com",
+                            "Brandnewday_Account",
                             "Free",
                             "1000",
                             "Jane_Account",
-                            "Jone_Account"});
+                            "Joe_Account"});
 #line 17
  testRunner.And("the user gets movment details response with values", ((string)(null)), table3, "And ");
 #line hidden
@@ -158,18 +156,15 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableTheoryAttribute(DisplayName="user gets the data to display with invalid product indentifier should return an e" +
+        [Xunit.SkippableFactAttribute(DisplayName="user gets the data to display with invalid product indentifier should return an e" +
             "rror")]
         [Xunit.TraitAttribute("FeatureTitle", "Read Moment detials")]
         [Xunit.TraitAttribute("Description", "user gets the data to display with invalid product indentifier should return an e" +
             "rror")]
-        [Xunit.InlineDataAttribute("Test", new string[0])]
-        [Xunit.InlineDataAttribute("", new string[0])]
-        public void UserGetsTheDataToDisplayWithInvalidProductIndentifierShouldReturnAnError(string productId, string[] exampleTags)
+        public void UserGetsTheDataToDisplayWithInvalidProductIndentifierShouldReturnAnError()
         {
-            string[] tagsOfScenario = exampleTags;
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("Product Id", productId);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("user gets the data to display with invalid product indentifier should return an e" +
                     "rror", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 24
@@ -186,7 +181,7 @@ this.ScenarioInitialize(scenarioInfo);
 this.FeatureBackground();
 #line hidden
 #line 25
- testRunner.When(string.Format("user gets movement detial with by product id \"{0}\"", productId), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("user gets movement detial with by Product Type \"Test\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 26
  testRunner.Then("the user gets a response with code \"400\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");

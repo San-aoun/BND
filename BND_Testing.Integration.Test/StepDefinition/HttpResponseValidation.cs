@@ -11,8 +11,7 @@ namespace BND_Testing.Integration.Test.StepDefinition
     [Binding]
     public class HttpResponseValidation : BaseStepDefinition
     {
-        public HttpResponseValidation(LocalServerFactory<Startup> factory,
-            ShareScenarioContext shareScenarioContext, FakeDB fakeDBContext)
+        public HttpResponseValidation(LocalServerFactory<Startup> factory,ShareScenarioContext shareScenarioContext, FakeDB fakeDBContext)
         : base(factory, shareScenarioContext, fakeDBContext) { }
 
         [Then(@"the system gets a response with code ""(.*)""")]

@@ -18,7 +18,7 @@ namespace BND_Testing.Integration.Test.StepDefinition
         protected LocalServerFactory<Startup> _httpClientFactory;
         protected readonly FakeDB _fakeDBContext;
         public BaseStepDefinition(
-        LocalServerFactory<Startup> factory, ShareScenarioContext shareScenarioContext, FakeDB fakeDBContext)
+            LocalServerFactory<Startup> factory, ShareScenarioContext shareScenarioContext, FakeDB fakeDBContext)
         {
             _httpClientFactory = factory;
             _shareScenarioContext = shareScenarioContext;
