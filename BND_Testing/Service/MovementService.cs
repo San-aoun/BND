@@ -1,44 +1,38 @@
 ﻿using BND_Testing.DBModel.FakeDB;
-using BND_Testing.Domain;
 using BND_Testing.Dto;
 using BND_Testing.Model;
 using System;
-using System.Threading.Tasks;
 
 namespace BND_Testing.Service
 {
-    public class MovementService : IMovementService
-    {
-        private FakeDB _context;
-        public MovementService(FakeDB context)
+    public class MovementService 
+    {      
+        public MovementDto GetMovementsForOverview(int productId, EnumGetMovementFilter filter)
         {
-            _context = context;
-        }
-
-        public async Task<MovementDto> GetMovementsForOverview(int productId, EnumGetMovementFilter filter)
-        {
-
-            var prodCustomer = _context.ProductCustomers.Find(productId);
-            if (prodCustomer != null)
+            using (var context = new FakeDB())
             {
-                // Call 3-Party API and Map with BND customer
-                ThirdPartyResponse mockThirdPartyResp = new()
+                var prodCustomer = context.ProductCustomers.Find(productId);
+                if (prodCustomer != null)
                 {
-                    Account = "Brandnewday_Account",
-                    Amount = 1000,
-                    AccountFrom = "Jane_Account",
-                    AccountTo = "Joe_Account",
-                    PageNumber = 10,
-                    PageSize = 10,
+                    // Call 3-Party API and Map with BND customer
+                    ThirdPartyResponse mockThirdPartyResp = new()
+                    {
+                        Account = "Brandnewday_Account",
+                        Amount = 1000,
+                        AccountFrom = "Jane_Account",
+                        AccountTo = "Joe_Account",
+                        PageNumber = 10,
+                        PageSize = 10,
 
-                    MovementType = (EnumMovementType)Enum.Parse(typeof(EnumMovementType), filter.ToString()),
-                };
+                        MovementType = (EnumMovementType)Enum.Parse(typeof(EnumMovementType), filter.ToString()),
+                    };
 
-                MovementDto movement = Map(mockThirdPartyResp);
-                return movement;
-            } 
-            else
-                return null;           
+                    MovementDto movement = Map(mockThirdPartyResp);
+                    return movement;
+                }
+                else
+                    return null;
+            };       
         }
 
         public static MovementDto Map(ThirdPartyResponse thirdPartyResponse) => new()

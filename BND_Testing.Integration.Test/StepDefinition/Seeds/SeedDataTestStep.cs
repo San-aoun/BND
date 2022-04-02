@@ -49,8 +49,6 @@ namespace BND_Testing.Integration.Test.StepDefinition.Seeds
                 {
                     ProductId = ProductId,
                     CustomerId = CustomerId,
-                    Product = product,
-                    Customer = customer
                 };
                 _fakeDBContext.ProductCustomers.Add(productCustomer);
                 _fakeDBContext.SaveChanges();

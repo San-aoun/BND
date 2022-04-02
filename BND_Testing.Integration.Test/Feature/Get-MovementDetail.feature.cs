@@ -101,14 +101,17 @@ namespace BND_Testing.Integration.Test.Feature
             this.TestTearDown();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="user gets the data to display the movements overview should get detials")]
+        [Xunit.SkippableFactAttribute(DisplayName="The user gets the data to display the movement overview and should receive detail" +
+            "s.")]
         [Xunit.TraitAttribute("FeatureTitle", "Read Moment detials")]
-        [Xunit.TraitAttribute("Description", "user gets the data to display the movements overview should get detials")]
-        public void UserGetsTheDataToDisplayTheMovementsOverviewShouldGetDetials()
+        [Xunit.TraitAttribute("Description", "The user gets the data to display the movement overview and should receive detail" +
+            "s.")]
+        public void TheUserGetsTheDataToDisplayTheMovementOverviewAndShouldReceiveDetails_()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("user gets the data to display the movements overview should get detials", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The user gets the data to display the movement overview and should receive detail" +
+                    "s.", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 11
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -123,7 +126,8 @@ this.ScenarioInitialize(scenarioInfo);
 this.FeatureBackground();
 #line hidden
 #line 12
- testRunner.When("user gets movement detial with by Product Type \"SavingsRetirment\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("the user gets movement detial with by Product Type \"SavingsRetirment\" and fillter" +
+                        "Type \"Free\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 13
  testRunner.Then("the user gets a response with code \"200\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -156,18 +160,18 @@ this.FeatureBackground();
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="user gets the data to display with invalid product indentifier should return an e" +
-            "rror")]
+        [Xunit.SkippableFactAttribute(DisplayName="The user gets the data to display the movements overview with no map and no movem" +
+            "ent type should respond successfully but with empty movements.")]
         [Xunit.TraitAttribute("FeatureTitle", "Read Moment detials")]
-        [Xunit.TraitAttribute("Description", "user gets the data to display with invalid product indentifier should return an e" +
-            "rror")]
-        public void UserGetsTheDataToDisplayWithInvalidProductIndentifierShouldReturnAnError()
+        [Xunit.TraitAttribute("Description", "The user gets the data to display the movements overview with no map and no movem" +
+            "ent type should respond successfully but with empty movements.")]
+        public void TheUserGetsTheDataToDisplayTheMovementsOverviewWithNoMapAndNoMovementTypeShouldRespondSuccessfullyButWithEmptyMovements_()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("user gets the data to display with invalid product indentifier should return an e" +
-                    "rror", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 24
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The user gets the data to display the movements overview with no map and no movem" +
+                    "ent type should respond successfully but with empty movements.", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 21
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -180,11 +184,96 @@ this.ScenarioInitialize(scenarioInfo);
 #line 3
 this.FeatureBackground();
 #line hidden
-#line 25
- testRunner.When("user gets movement detial with by Product Type \"Test\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 22
+ testRunner.When("the user gets movement detial with by Product Type \"SavingsRetirment\" and fillter" +
+                        "Type \"Tax\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
+#line 23
+ testRunner.Then("the user gets a response with code \"200\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                            "pageNumber",
+                            "pageSize"});
+#line 24
+ testRunner.And("the user gets data details response with values", ((string)(null)), table4, "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                            "account",
+                            "movementType",
+                            "amount",
+                            "accountFrom",
+                            "accountTo"});
 #line 26
- testRunner.Then("the user gets a response with code \"400\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("the user gets movment details response with values", ((string)(null)), table5, "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="The user gets data to display with an invalid product type and should response an" +
+            " error")]
+        [Xunit.TraitAttribute("FeatureTitle", "Read Moment detials")]
+        [Xunit.TraitAttribute("Description", "The user gets data to display with an invalid product type and should response an" +
+            " error")]
+        public void TheUserGetsDataToDisplayWithAnInvalidProductTypeAndShouldResponseAnError()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The user gets data to display with an invalid product type and should response an" +
+                    " error", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 32
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 3
+this.FeatureBackground();
+#line hidden
+#line 33
+ testRunner.When("the user gets movement detial with by Product Type \"Test\" and fillterType \"Free\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 34
+ testRunner.Then("the user gets a response with code \"404\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Xunit.SkippableFactAttribute(DisplayName="The user gets data to display the movements overview with an empty filler type an" +
+            "d should response an error")]
+        [Xunit.TraitAttribute("FeatureTitle", "Read Moment detials")]
+        [Xunit.TraitAttribute("Description", "The user gets data to display the movements overview with an empty filler type an" +
+            "d should response an error")]
+        public void TheUserGetsDataToDisplayTheMovementsOverviewWithAnEmptyFillerTypeAndShouldResponseAnError()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("The user gets data to display the movements overview with an empty filler type an" +
+                    "d should response an error", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 36
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 3
+this.FeatureBackground();
+#line hidden
+#line 37
+ testRunner.When("the user gets movement detial with by Product Type \"SavingsRetirment\" and fillter" +
+                        "Type \"Test\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 38
+ testRunner.Then("the user gets a response with code \"404\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
